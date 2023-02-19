@@ -1,0 +1,20 @@
+.item:focus{
+ cursor: pointer;
+ color: orangered;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.navLink{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+
+}
+.navLink:hover{
+  color: orangered;
+
+}
+

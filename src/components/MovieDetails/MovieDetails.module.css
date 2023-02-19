@@ -1,0 +1,96 @@
+.img{
+  width: 400px;
+  margin-right: 20px;
+}
+.title{
+  color: orangered;
+}
+.container{
+  display: flex;
+  border-bottom: 1px solid #2a363b;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+.button{
+  background-color: #141414;
+  border: none;
+  width: 60px;
+  color: white;
+  font-size:16px;
+}
+.button:hover{
+  background-color:#141420;
+}
+.movieDetails{
+  flex-direction: column;
+}
+.infoList {
+  margin-bottom: 20px;
+}
+
+.infoItem {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.infoItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.infoText {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.33;
+  flex-basis: calc(100% / 2);
+}
+.infoName {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.33;
+  flex-basis: calc(100% / 2);
+  color: #8c8c8c;
+}
+
+.spanVote {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  background-color: orangered;
+  color: white;
+  line-height: 1.17;
+  text-align: center;
+}
+
+.spanSlash {
+  color: white;
+}
+
+.spanVotes {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: orangered;
+  line-height: 1.17;
+  text-align: center;
+}
+.navLink{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.navLink:hover{
+  color: orangered;
+
+}
+
+.item{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+}
