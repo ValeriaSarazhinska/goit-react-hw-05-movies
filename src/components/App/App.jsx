@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home } from '../Home/Home';
 import Navigation from '../Navigation/Navigation';
 import { lazy, Suspense } from 'react';
 import css from './App.module.css';
