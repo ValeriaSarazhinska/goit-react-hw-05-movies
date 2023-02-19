@@ -18,7 +18,7 @@ const Cast = () => {
       }
     };
     fetchDataCast();
-  }, []);
+  });
 
   return (
     <ul className={css.list}>

@@ -16,7 +16,7 @@ const Reviews = () => {
       }
     };
     fetchDataReviews();
-  }, []);
+  });
 
   return (
     <ul>

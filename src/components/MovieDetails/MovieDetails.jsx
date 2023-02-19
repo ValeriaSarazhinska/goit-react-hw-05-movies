@@ -32,7 +32,7 @@ const MovieDetails = () => {
       }
     };
     fetchDataId();
-  }, []);
+  });
 
   const GoBack = () => {
     navigate(location + '/');

@@ -19,7 +19,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  });
   return (
     <>
       <h1 className={css.title}>Trending today</h1>
