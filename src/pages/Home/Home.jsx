@@ -11,10 +11,9 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
-        console.log(loading);
-        setLoading(true);
         const { films } = await getPopularMovies();
         setMovies(films);
       } catch (error) {
@@ -24,7 +23,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [loading]);
+  }, []);
   return (
     <>
       <h1 className={css.title}>Trending today</h1>
