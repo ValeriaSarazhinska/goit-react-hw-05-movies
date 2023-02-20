@@ -12,14 +12,17 @@
   padding-bottom: 20px;
 }
 .button{
-  background-color: #141414;
+  display: block;
   border: none;
-  width: 60px;
+  width: 80px;
   color: white;
   font-size:16px;
+  text-decoration: none;
+  margin-bottom: 10px;
 }
 .button:hover{
-  background-color:#141420;
+  color:orangered ;
+  font-weight: 600;
 }
 .movieDetails{
   flex-direction: column;

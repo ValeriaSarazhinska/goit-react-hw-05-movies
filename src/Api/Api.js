@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const key = 'b5c9f17b4578fb7f9b4d9d1272c464ac';
 const URL = `https://api.themoviedb.org/3`;
-
+const notFoundImageUrl = 'https://cdn-icons-png.flaticon.com/512/25/25634.png';
 export const getPopularMovies = async () => {
   try {
     const response = await axios.get(
@@ -34,7 +34,9 @@ export const getMoviesById = async id => {
       original_title,
     } = response.data;
     return {
-      poster_path,
+      poster_path: poster_path
+        ? 'https://image.tmdb.org/t/p/w500' + poster_path
+        : notFoundImageUrl,
       title,
       release_date,
       overview,
@@ -59,7 +61,9 @@ export const getMoviesCast = async id => {
       id,
       name,
       character,
-      profile_path,
+      profile_path: profile_path
+        ? 'https://image.tmdb.org/t/p/w500' + profile_path
+        : notFoundImageUrl,
     }));
   } catch (error) {
     console.log(error);

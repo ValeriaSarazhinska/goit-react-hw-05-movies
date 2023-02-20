@@ -1,43 +1,43 @@
 import { useEffect, useState } from 'react';
-import { Searchbar } from '../Searchbar/Searchbar';
-import { getMovieByQuery } from '../Api/Api';
+import { Searchbar } from '../../components/Searchbar/Searchbar';
+import { getMovieByQuery } from '../../Api/Api';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { MovieList } from '../MovieList/MovieList';
+import { MovieList } from '../../components/MovieList/MovieList';
 import { Notify } from 'notiflix';
+import Loader from '../../components/Loader/Loader';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-
+  const [searchParams] = useSearchParams();
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const searchRequest = searchParams.get('query');
-
-  const handleFormSubmit = query => {
-    setSearchParams({ query });
-  };
 
   useEffect(() => {
     if (!searchRequest) return;
+    setLoading(true);
     const fetchName = async () => {
       try {
         const film = await getMovieByQuery(searchRequest);
         if (!film.length) {
           return Notify.failure(
-            'Sorry, there are no images matching your search query. Please try again.'
+            'Sorry, there are no films matching your search query. Please try again.'
           );
         }
         setMovies(film);
       } catch (error) {
-        console.log(error);
+        Notify.failure('Please try again.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchName();
   }, [searchRequest]);
   return (
     <>
-      <Searchbar onSubmit={handleFormSubmit} />
-      <MovieList movies={movies} location={location} />
+      <Searchbar />
+      {loading ? <Loader /> : <MovieList movies={movies} location={location} />}
     </>
   );
 };

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Notify } from 'notiflix';
 import css from './Searchbar.module.css';
+import { useSearchParams } from 'react-router-dom';
 
-export const Searchbar = ({ onSubmit }) => {
+export const Searchbar = () => {
   const [query, setQuery] = useState('');
+  const [, setSearchParams] = useSearchParams();
 
   const handleNameChange = event => {
     setQuery(event.currentTarget.value.toLowerCase());
@@ -15,7 +17,7 @@ export const Searchbar = ({ onSubmit }) => {
       Notify.failure('Enter a query name.');
       return;
     }
-    onSubmit(query);
+    setSearchParams({ query });
     setQuery('');
   };
   return (
