@@ -23,7 +23,7 @@ const Cast = () => {
       }
     };
     fetchDataCast();
-  }, []);
+  }, [movieId]);
 
   return (
     <>

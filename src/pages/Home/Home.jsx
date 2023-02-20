@@ -24,7 +24,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [loading]);
   return (
     <>
       <h1 className={css.title}>Trending today</h1>

@@ -37,7 +37,7 @@ const MovieDetails = () => {
       }
     };
     fetchDataId();
-  }, []);
+  }, [movieId]);
 
   const backLinkHref = location.state?.from ?? '/';
 
