@@ -18,6 +18,8 @@ export const getPopularMovies = async () => {
     console.log(error);
   }
 };
+const getPosterSrc = url =>
+  url ? 'https://image.tmdb.org/t/p/w500' + url : notFoundImageUrl;
 
 export const getMoviesById = async id => {
   try {
@@ -34,13 +36,17 @@ export const getMoviesById = async id => {
       original_title,
     } = response.data;
     return {
-      poster_path: poster_path
-        ? 'https://image.tmdb.org/t/p/w500' + poster_path
-        : notFoundImageUrl,
+      poster_path: getPosterSrc(poster_path),
       title,
       release_date,
       overview,
-      genres,
+      genres:
+        genres &&
+        genres
+          .map(({ name }) => {
+            return name;
+          })
+          .join(' '),
       vote_average,
       vote_count,
       popularity,
@@ -61,9 +67,7 @@ export const getMoviesCast = async id => {
       id,
       name,
       character,
-      profile_path: profile_path
-        ? 'https://image.tmdb.org/t/p/w500' + profile_path
-        : notFoundImageUrl,
+      profile_path: getPosterSrc(profile_path),
     }));
   } catch (error) {
     console.log(error);

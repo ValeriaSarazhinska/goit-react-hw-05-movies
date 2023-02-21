@@ -1,21 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getMoviesById } from '../../Api/Api';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
-import styled from 'styled-components';
 import Loader from '../../components/Loader/Loader';
-
-const StyledLink = styled(NavLink)`
-  &.active {
-    color: orangered;
-  }
-`;
+import MovieDetailsInfo from './MovieDetailsInfo';
+import MovieDetailsAdditionalInfo from './MovieDetailsAdditionalInfo';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -50,65 +39,8 @@ const MovieDetails = () => {
           <Link className={css.button} to={backLinkHref}>
             &#8592; Go back
           </Link>
-          <div className={css.container}>
-            <img className={css.img} src={movie.poster_path} alt={movie.name} />
-            <div className={css.movieDetails}>
-              <h1 className={css.title}>{movie.title}</h1>
-              <ul className={css.infoList}>
-                <li className={css.infoItem}>
-                  <p className={css.infoName}>Vote / Votes</p>
-                  <p className={css.infoText}>
-                    <span className={css.spanVotes}>{movie.vote_average}</span>
-                    <span className={css.spanSlash}> / </span>
-                    <span className={css.spanVotes}>{movie.vote_count}</span>
-                  </p>
-                </li>
-                <li className={css.infoItem}>
-                  <p className={css.infoName}>Popularity</p>
-                  <p className={css.infoText}>{movie.popularity}</p>
-                </li>
-
-                <li className={css.infoItem}>
-                  <p className={css.infoName}>Original Title</p>
-                  <p className={css.infoText}>{movie.original_title}</p>
-                </li>
-
-                <li className={css.infoItem}>
-                  <p className={css.infoName}>Genre</p>
-                  <p className={css.infoText}>
-                    {movie.genres &&
-                      movie.genres
-                        .map(({ name }) => {
-                          return name;
-                        })
-                        .join(' ')}
-                  </p>
-                </li>
-              </ul>
-              <p className={css.infoName}>Overview</p>
-              <p>{movie.overview}</p>
-            </div>
-          </div>
-          <ul className={css.item}>
-            <li>
-              <StyledLink
-                className={css.navLink}
-                to="cast"
-                state={{ from: backLinkHref }}
-              >
-                Cast
-              </StyledLink>
-            </li>
-            <li>
-              <StyledLink
-                className={css.navLink}
-                to="reviews"
-                state={{ from: backLinkHref }}
-              >
-                Reviews
-              </StyledLink>
-            </li>
-          </ul>
+          <MovieDetailsInfo movie={movie} />
+          <MovieDetailsAdditionalInfo backLinkHref={backLinkHref} />
           <Outlet />
         </div>
       )}
